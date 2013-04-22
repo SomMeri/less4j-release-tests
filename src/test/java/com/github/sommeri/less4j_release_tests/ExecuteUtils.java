@@ -41,5 +41,11 @@ public class ExecuteUtils {
     executor.execute(cmdLine);    
   }
 
+  public void runCommandInDir(File directory, String command) throws ExecuteException, IOException {
+    DefaultExecutor executor = createCommandExecutor(directory);
+    
+    CommandLine cmdLine = CommandLine.parse(command);
+    executor.execute(cmdLine);    
+  }
 
 }
