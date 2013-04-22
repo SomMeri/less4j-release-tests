@@ -15,6 +15,7 @@ import org.apache.commons.io.filefilter.IOFileFilter;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.github.sommeri.less4j_release_tests.normalizers.Normalizator;
 import com.github.sommeri.less4j_release_tests.rhino.Global;
 import com.github.sommeri.less4j_release_tests.rhino.Main;
 
@@ -34,7 +35,9 @@ public class BootstrapTest extends CommandLineTest {
 
   //products 
   private static final File lessjsCss = new File(workingDirectory, "/lessjs-compiled.css");
+  private static final File normalizedLessjsCss = new File(workingDirectory, "/lessjs-normalized.css");
   private static final File less4jCss = new File(workingDirectory, "/less4j-compiled.css");
+  private static final File normalizedLess4jCss = new File(workingDirectory, "/less4j-normalized.css");
   private static final File compiledLess4j = new File(workingDirectory, "/less4j.jar");
 
   private static ExecuteUtils executeUtils = new ExecuteUtils(workingDirectory);
@@ -97,7 +100,7 @@ public class BootstrapTest extends CommandLineTest {
   @Test
   public void test() throws Exception {
     // checkout tag
-    checkoutTag();
+    checkoutBootstrapTag();
 
     // compile with less.js
     compileByLessJs();
@@ -105,35 +108,42 @@ public class BootstrapTest extends CommandLineTest {
     // compile with less4j
     compileByLess4j();
     // normalize both
+    
+    Normalizator.normalize(lessjsCss, normalizedLessjsCss);
+    Normalizator.normalize(less4jCss, normalizedLess4jCss);
+
     // compare normalized results
-    fail("Not yet implemented");
+    fileUtils.assertSameFileContent(normalizedLessjsCss.getPath(), normalizedLess4jCss.getPath());
   }
 
   private void compileByLess4j() throws ExecuteException, IOException {
+    log("compile by less4j");
     executeUtils.runCommand("java -jar less4j.jar " + bootstrapLess.getPath() + " " + less4jCss.getPath());
+    logStepEnd();
   }
 
   private void compileByLessJs() throws Exception {
-    log("Init Rhino");
-    // original rhino main is taken from here: http://grepcode.com/file/repo1.maven.org/maven2/org.mozilla/rhino/1.7R4/org/mozilla/javascript/tools/shell/Main.java#Main.exec%28java.lang.String[]%29
+    log("compile with Rhino less.js");
     Global _global = new Global();
     _global.setErr(new PrintStream(errContent));
-    PrintStream out = new PrintStream(lessjsCss);
-    _global.setOut(out);
-    Main.main(_global, (String[]) Arrays.asList(RHINO_LESSJS, bootstrapLess.getPath()).toArray());
+    Main.main(_global, (String[]) Arrays.asList(RHINO_LESSJS, bootstrapLess.getPath(), lessjsCss.getPath()).toArray());
     assertEquals("", errContent.toString());
-    out.flush();
-    out.close();
+    logStepEnd();
   }
 
-  private void checkoutTag() throws ExecuteException, IOException {
+  private void checkoutBootstrapTag() throws ExecuteException, IOException {
+    log("Checkout twitter bootsrap tag");
     log("# " + TWITTER_BOOTSTRAP_CHECKOUT_TAG);
     executeUtils.runCommand(bootstrapSubDirectory, TWITTER_BOOTSTRAP_CHECKOUT_TAG);
-    log("# tag done");
+    logStepEnd();
   }
 
   private static void log(String string) {
     System.out.println(string);
+  }
+
+  private void logStepEnd() {
+    log("-----------------------");
   }
 
 }

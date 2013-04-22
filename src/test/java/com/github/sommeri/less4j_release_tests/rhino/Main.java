@@ -53,6 +53,7 @@ import org.mozilla.javascript.tools.shell.ShellContextFactory;
  * 
  * @author Norris Boyd
  */
+// original rhino main is taken from here: http://grepcode.com/file/repo1.maven.org/maven2/org.mozilla/rhino/1.7R4/org/mozilla/javascript/tools/shell/Main.java#Main.exec%28java.lang.String[]%29
 public class Main {
   
   public static ShellContextFactory shellContextFactory = new ShellContextFactory();
