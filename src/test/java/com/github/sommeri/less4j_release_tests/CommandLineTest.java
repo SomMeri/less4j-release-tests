@@ -11,6 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 
 
+//FIXME: clean up and remove unused stuff
 public abstract class CommandLineTest {
 
   protected static final String inputDir = "src/test/resources/command-line/";
@@ -26,19 +27,19 @@ public abstract class CommandLineTest {
   private PrintStream originalOut = null;
   private PrintStream originalErr = null;
 
-  @Before
-  public void setUpStreams() {
-    originalOut = System.out;
-    originalErr = System.err;
-    System.setOut(new PrintStream(outContent));
-    System.setErr(new PrintStream(errContent));
-  }
-
-  @After
-  public void cleanUpStreams() {
-    System.setOut(originalOut);
-    System.setErr(originalErr);
-  }
+//  @Before
+//  public void setUpStreams() {
+//    originalOut = System.out;
+//    originalErr = System.err;
+//    System.setOut(new PrintStream(outContent));
+//    System.setErr(new PrintStream(errContent));
+//  }
+//
+//  @After
+//  public void cleanUpStreams() {
+//    System.setOut(originalOut);
+//    System.setErr(originalErr);
+//  }
 
   protected void assertHelpScreen() {
     String output = outContent.toString();
