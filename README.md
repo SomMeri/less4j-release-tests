@@ -10,15 +10,25 @@ Less4j-release-tests works only if:
 * maven is installed and accessible from command line,
 * java is installed and accessible from command line.
 
+Note: less4j-release-tests works inside `..\less4j-release-tests-working-dir` directory. Do not store anything is it, the project can recreate and delete its content any time it runs.  
+
+Directory structure after tests have been run:
+````
+-- workspace
+  |-- less4j
+  |-- less4j-release-tests
+  |-- less4j-release-tests-working-dir
+````
+
 ## Test Case
 ### Twitter Bootstrap 
 Compiles [Twitter Bootstrap](http://twitter.github.com/bootstrap/) v2.3.1 with both less-1.3.3.js and latest less4j. Checks generated css files for compatibility.
 
 Compiled Bootstrap files:
-* bootstrap/less/bootstrap.less
-* bootstrap/less/responsive.less
+* test 1: bootstrap/less/bootstrap.less,
+* test 2: bootstrap/less/responsive.less.
 
-Steps:
+Steps in details:
 * clone or update Twitter Bootstrap repository,
 * checkout tag,
 * compile with less.js,
@@ -31,7 +41,6 @@ Issues are tracked in Less4j [issues tracker](https://github.com/SomMeri/less4j/
 ## TODO
 * TODO: remove target directory
 * TODO: add license 
-* TODO: write readme
 * TODO: add info into tests page on less4j
 * TODO: tweet
 
