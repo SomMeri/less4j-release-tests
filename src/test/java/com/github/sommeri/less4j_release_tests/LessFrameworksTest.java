@@ -15,7 +15,6 @@ import com.github.sommeri.less4j_release_tests.twitterbootstrap.TwitterBootstrap
 import com.github.sommeri.less4j_release_tests.twitterbootstrap.TwitterBootstrap.Tag;
 import com.github.sommeri.less4j_release_tests.utils.TestFileUtils;
 
-//FIXME: ???? test with failing maven compilation
 public class LessFrameworksTest {
 
   private static final boolean SKIP_LESS4J_COMPILATION = false;

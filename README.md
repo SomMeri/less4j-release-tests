@@ -21,10 +21,12 @@ Directory structure after tests have been run:
 ````
 
 ## Test Case
-### Twitter Bootstrap 
-Compiles [Twitter Bootstrap](http://twitter.github.com/bootstrap/) v2.3.1 with both less-1.3.3.js and latest less4j. Checks generated css files for compatibility.
+The project has one test case which checks less4j Twitter Bootstrap compatibility.
 
-Compiled Bootstrap files:
+### Twitter Bootstrap 
+LessFrameworksTest test case compiles [Twitter Bootstrap](http://twitter.github.com/bootstrap/) v2.3.1 with both less-1.3.3.js and latest less4j. Checks generated css files for compatibility.
+
+Checks compilation compatibility of two Bootstrap files:
 * test 1: bootstrap/less/bootstrap.less,
 * test 2: bootstrap/less/responsive.less.
 
@@ -39,9 +41,7 @@ Steps in details:
 Issues are tracked in Less4j [issues tracker](https://github.com/SomMeri/less4j/issues).
 
 ## TODO
-* TODO: remove target directory
 * TODO: add license 
-* TODO: add info into tests page on less4j
 * TODO: tweet
 
 
