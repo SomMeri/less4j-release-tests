@@ -1,4 +1,4 @@
-package com.github.sommeri.less4j_release_tests;
+package com.github.sommeri.less4j_release_tests.utils;
 
 import java.io.File;
 import java.io.IOException;

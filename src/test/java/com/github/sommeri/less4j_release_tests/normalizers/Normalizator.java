@@ -97,6 +97,7 @@ public class Normalizator {
     //whitespaces 
     line = line.replaceAll("@page  \\{", "@page \\{"); 
     line = line.replaceAll("background-position: 0      0;", "background-position: 0 0;"); 
+    line = line.replaceAll("display: none !important ;", "display: none !important;");
     
     return line;
   }

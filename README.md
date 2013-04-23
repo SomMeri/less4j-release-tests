@@ -2,9 +2,13 @@ less4j-release-tests
 ====================
 
 TODO: remove target directory
+TODO: remove target directory
+TODO: remove target directory
 TODO: add license 
 TODO: write readme
 TODO: add step into release proces wiki page
+TODO: add info into tests page on less4j
+TODO: link less4j
 TODO: tweet
 
 This project assumes that 
