@@ -5,6 +5,7 @@ import static org.junit.Assert.fail;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.exec.ExecuteException;
 import org.apache.commons.io.FileUtils;
@@ -61,16 +62,18 @@ public class Less4jCompilator {
     return listFiles.iterator().next();
   }
 
-  public void compileLessFile(File input, File output) throws ExecuteException, IOException {
-    compileLessFile(input.getPath(), output.getPath());
+  public long compileLessFile(File input, File output) throws ExecuteException, IOException {
+    return compileLessFile(input.getPath(), output.getPath());
   }
   
-  public void compileLessFile(String input, String output) throws ExecuteException, IOException {
+  public long compileLessFile(String input, String output) throws ExecuteException, IOException {
+    long startTime = System.nanoTime();
     Logger.log("compile by less4j");
     String command = RUN_LESS4J_JAR + input + " " + output;
     Logger.log("# " + command);
     executeUtils.runCommand(command);
     Logger.logStepEnd();
+    return TimeUnit.MILLISECONDS.convert(System.nanoTime() - startTime, TimeUnit.NANOSECONDS);
   }
 
 }
