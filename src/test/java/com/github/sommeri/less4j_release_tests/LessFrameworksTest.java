@@ -21,7 +21,7 @@ import com.github.sommeri.less4j_release_tests.utils.TestFileUtils;
 
 public class LessFrameworksTest {
 
-  private static final boolean SKIP_LESS4J_COMPILATION = true;
+  private static final boolean SKIP_LESS4J_COMPILATION = false;
 
   private static final File workingDirectory = new File("../less4j-release-tests-working-dir/");
   
@@ -69,6 +69,7 @@ public class LessFrameworksTest {
     Normalizator.normalize(less4jCss, normalizedLess4jCss);
 
     timeReporter.addTestRunData(testName, lessJsTime, less4jTime);
+    timeReporter.printReport();
 
     // compare normalized results
     fileUtils.assertSameFileContent(normalizedLessjsCss.getPath(), normalizedLess4jCss.getPath());

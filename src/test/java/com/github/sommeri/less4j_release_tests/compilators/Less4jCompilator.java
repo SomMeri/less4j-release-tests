@@ -18,7 +18,7 @@ public class Less4jCompilator {
 
   private static final String RUN_LESS4J_JAR = "java -jar less4j.jar ";
   private static final String MVN_CLEAN = "clean";
-  private static final String MVN_PACKAGE = "package -P standalone";
+  private static final String MVN_PACKAGE = "package -DskipTests=true -P standalone";
   
   private static final File LESS4J_SOURCE_CODE_LOCATION = new File("../less4j/");
 

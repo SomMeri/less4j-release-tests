@@ -13,6 +13,7 @@ public class TwitterBootstrap {
 
   private static final String CLONE = "git clone https://github.com/twitter/bootstrap.git";
   private static final String CHECKOUT_TAG = "git checkout #TAG#";
+  private static final String RESET_HARD = "git reset --hard";
   private static final String CHECKOUT_MASTER = "git checkout master";
   private static final String PULL = "git pull";
 
@@ -48,6 +49,8 @@ public class TwitterBootstrap {
   }
 
   private void checkoutHeadAndPull() throws ExecuteException, IOException {
+    Logger.log("# " + RESET_HARD); //FIXME: it would be better to find out why it happens
+    executeUtils.runCommand(RESET_HARD);
     Logger.log("# " + CHECKOUT_MASTER);
     executeUtils.runCommand(CHECKOUT_MASTER);
     Logger.log("# " + PULL);

@@ -89,6 +89,12 @@ public class Normalizator {
     line = line.replaceAll("\\(.75,", "\\(0.75,");
     line = line.replaceAll("\\(.5,", "\\(0.5,");
     line = line.replaceAll("\\(.25,", "\\(0.25,");
+    line = line.replaceAll("0,0,0,.075", "0, 0, 0, 0.075");
+    line = line.replaceAll(", ", ",");
+    line = line.replaceAll(",\\.", ",0\\.");
+
+    //special symbols
+    line = line.replaceAll(" = ", "=");
 
     //ignore last decimal place 51.063829787234035%; 
     line = line.replaceAll("(\\d{1,2}\\.\\d{13})\\d%", "$1%");
