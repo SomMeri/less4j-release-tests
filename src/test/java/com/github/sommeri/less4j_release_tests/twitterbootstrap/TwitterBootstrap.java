@@ -11,7 +11,7 @@ import com.github.sommeri.less4j_release_tests.utils.TestFileUtils;
 
 public class TwitterBootstrap {
 
-  private static final String CLONE = "git clone https://github.com/twitter/bootstrap.git";
+  private static final String CLONE = "git clone https://github.com/twbs/bootstrap.git";
   private static final String CHECKOUT_TAG = "git checkout #TAG#";
   private static final String RESET_HARD = "git reset --hard";
   private static final String CHECKOUT_MASTER = "git checkout master";
