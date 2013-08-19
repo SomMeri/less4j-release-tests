@@ -20,8 +20,10 @@ Directory structure after tests have been run:
   |-- less4j-release-tests-working-dir
 ````
 
-## Test Case
-The project has one test case which checks less4j Twitter Bootstrap compatibility.
+## Test Cases
+The project has two test cases:
+* checks less4j Twitter Bootstrap compatibility,
+* check optional dependency.
 
 ### Twitter Bootstrap 
 *LessFrameworksTest* test case compiles [Twitter Bootstrap](http://twitter.github.com/bootstrap/) v2.3.1 with both less-1.3.3.js and latest less4j. Checks generated css files for compatibility.
@@ -36,6 +38,16 @@ Steps in details:
 * compile with less.js,
 * compile with less4j,
 * normalize and compare results. 
+
+### Optional Dependency
+Less4j has one optional dependency - JCommander which parses command line arguments. Normal non-command line version is not supposed to use its classes. The test creates an instance of programmatic less4j and uses it to compile a small less file. If the compilation hits any class from the optional dependency, a class not found exception is thrown.  
+
+Steps in details:
+* compile less4j,
+* download all non-optional dependencies,
+* load less4j jar and all jars with dependencies,
+* create compiler instance,
+* compile small less.
 
 ## Issues Tracking
 Issues are tracked in Less4j [issues tracker](https://github.com/SomMeri/less4j/issues).
