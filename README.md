@@ -40,7 +40,9 @@ Steps in details:
 * normalize and compare results. 
 
 ### Optional Dependency
-Less4j has one optional dependency - JCommander which parses command line arguments. Normal non-command line version is not supposed to use its classes. *OptionalDependencyTest* test case creates an instance of programmatic less4j and uses it to compile small less file. If the compilation hits any class from the optional dependency, 'class not found' exception is thrown.  
+Less4j has one optional dependency - JCommander which parses command line arguments. Normal non-command line version is not supposed to use its classes. 
+
+*OptionalDependencyTest* test case creates an instance of programmatic less4j and uses it to compile small less file. If the compilation hits any class from the optional dependency, 'class not found' exception is thrown.  
 
 Steps in details:
 * compile less4j,
