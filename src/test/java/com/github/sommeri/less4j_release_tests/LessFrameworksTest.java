@@ -21,12 +21,9 @@ import com.github.sommeri.less4j_release_tests.utils.TestFileUtils;
 
 public class LessFrameworksTest {
 
-  private static final boolean SKIP_LESS4J_COMPILATION = false;
 
-  private static final File workingDirectory = new File("../less4j-release-tests-working-dir/");
-  
-  private static TwitterBootstrap twitterBootstrap = new TwitterBootstrap(workingDirectory);
-  private static Less4jCompilator less4jCompilator = new Less4jCompilator(workingDirectory);
+  private static TwitterBootstrap twitterBootstrap = new TwitterBootstrap(ReleaseConstants.WORKING_DIRECTORY);
+  private static Less4jCompilator less4jCompilator = ReleaseConstants.LESS4J_COMPILATOR;
   private static LessJsCompilator lessJsCompilator = new LessJsCompilator();
   private static TimeReporter timeReporter = new TimeReporter();
 
@@ -34,10 +31,9 @@ public class LessFrameworksTest {
 
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {
-    (new TestFileUtils()).ensureDirectory(workingDirectory);
-    
+    AbstractLess4jTest.setUpBeforeClass();
+
     twitterBootstrap.acquireClone();
-    less4jCompilator.acquireLatestLess4j(SKIP_LESS4J_COMPILATION);
   }
 
   @AfterClass
@@ -52,7 +48,7 @@ public class LessFrameworksTest {
   }
 
   private void runTest(String testName, File inputLess) throws IOException, Exception, FileNotFoundException, ExecuteException {
-    File testInDirectory = new File(workingDirectory, testName);
+    File testInDirectory = new File(ReleaseConstants.WORKING_DIRECTORY, testName);
     fileUtils.ensureCleanExistingDirectory(testInDirectory);
 
     File lessjsCss = new File(testInDirectory, "/lessjs-compiled.css");
