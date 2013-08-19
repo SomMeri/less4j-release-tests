@@ -22,11 +22,11 @@ Directory structure after tests have been run:
 
 ## Test Cases
 The project has two test cases:
-* checks less4j Twitter Bootstrap compatibility,
+* check less4j Twitter Bootstrap compatibility,
 * check optional dependency.
 
 ### Twitter Bootstrap 
-*LessFrameworksTest* test case compiles [Twitter Bootstrap](http://twitter.github.com/bootstrap/) v2.3.1 with both less-1.3.3.js and latest less4j. Checks generated css files for compatibility.
+*LessFrameworksTest* test case compiles [Twitter Bootstrap](http://twitter.github.com/bootstrap/) v2.3.1 with both less-1.3.3.js and latest less4j. The test then checks generated css files for compatibility.
 
 Checks compilation compatibility of two Bootstrap files:
 * test 1: bootstrap/less/bootstrap.less,
@@ -40,7 +40,7 @@ Steps in details:
 * normalize and compare results. 
 
 ### Optional Dependency
-Less4j has one optional dependency - JCommander which parses command line arguments. Normal non-command line version is not supposed to use its classes. The test creates an instance of programmatic less4j and uses it to compile a small less file. If the compilation hits any class from the optional dependency, a class not found exception is thrown.  
+Less4j has one optional dependency - JCommander which parses command line arguments. Normal non-command line version is not supposed to use its classes. *OptionalDependencyTest* test case creates an instance of programmatic less4j and uses it to compile small less file. If the compilation hits any class from the optional dependency, 'class not found' exception is thrown.  
 
 Steps in details:
 * compile less4j,
